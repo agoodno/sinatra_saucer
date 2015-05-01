@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'ftools'
+require 'fileutils'
 require 'zip/zip'
 require 'pdf'
 require 'sinatra'
@@ -41,7 +41,7 @@ helpers do
   end
 
   def save_file
-    File.makedirs(@dir)
+    FileUtils.mkdir_p(@dir)
     File.open(@zip, "w") do |f|
       data = params[:raw_data] || params[:data][:tempfile].read
       f.write(data)
@@ -64,7 +64,7 @@ helpers do
 
   def create_pdf
     @pdf = if File.exist?(File.join(@dir, 'MANIFEST'))
-      create_pdf_from_multiple_files    
+      create_pdf_from_multiple_files
     else
       create_pdf_from_single_file('pdf.html')
     end
