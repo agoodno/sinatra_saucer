@@ -18,6 +18,6 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  pbrant-flyingsaucer4r (~> 0.5)
+  pbrant-flyingsaucer4r (~> 0.7)
   sinatra
   zip-zip (~> 0.3)
